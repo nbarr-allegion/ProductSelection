@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+</head>
+<body>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style type="text/less">
+    .blueText {
+        color: #0081C5;
+    }
+
+    .panel-heading {
+        background-color: transparent !important;
+        border-right: unset !important;
+        border-left: unset !important;
+        border-bottom: unset !important;
+        padding: 15px 15px 0 15px;
+
+        p {
+            font-size: 16px;
+            line-height: 18px;
+            color: #999 !important;
+        }
+    }
+
+    .panel {
+        border-right: unset !important;
+        border-left: unset !important;
+        border-bottom: unset !important;
+        box-shadow: unset !important;
+
+        .panel-body {
+            border-top: unset !important;
+            padding-top: 5px;
+
+            img {
+                cursor: pointer;
+                margin: 0 auto;
+                transition: opacity .25s;
+
+                &.selected {
+                    border: 3px solid #64cbe8;
+                }
+
+                &.unselected {
+                    opacity: 0.3;
+                    filter: alpha(opacity=30);
+                }
+            }
+
+            .textOnTopOfImgSelector {
+                text-align: center;
+            }
+
+            .col-sm-4.col-product-5-in-row {
+                @media (min-width: 768px) {
+                    width: 20%;
+                }
+                .styleFrame{
+                    border: lightgray solid 1px;
+                    padding: 0;
+                    margin: 10px;
+                }
+
+            }
+        }
+
+        a {
+            border-bottom: 1px solid transparent;
+            transition: all .25s ease-in;
+            text-decoration: unset !important;
+
+            &:hover {
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+
+    .p-t-15 {
+        padding-top: 15px;
+    }
+
+    .accordionHeadings {
+        font-family: 'Stag Web', Helvetica, Arial, sans-serif;
+        line-height: 40px;
+        font-weight: 300 !important;
+        font-size: 34px;
+        color: black;
+    }
+
+    .selectionType {
+        color: #0082c7;
+        font-family: 'Stag Web';
+        letter-spacing: 1px;
+        font-size: 14px;
+        padding-bottom: 0;
+        line-height: 14px;
+        display: block;
+    }
+
+    .editSelection {
+        font-family: 'Avenir-Book';
+        font-size: 11px !important;
+        text-transform: uppercase;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .align-vertically {
+        margin-top: 15px;
+    }
+
+    .opaqTitle {
+        transition: opacity .5s;
+
+        &.selected {
+            opacity: .3;
+
+        }
+    }
+
+    .capitalize {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 11px;
+        padding-top: 10px;
+        color: #4d4d4d;
+    }
+
+    .selectorResults {
+        border-width: 10px 1px 1px 1px;
+        border-color: #0081c6 #e5e5e5 #e5e5e5 #e5e5e5;
+        border-style: solid;
+
+        .smallPadding {
+            padding: 5px;
+
+            .giveLeftBorder {
+
+            }
+
+            .resultsFont {
+                font-size: 16px !important;
+                line-height: 18px;
+                text-align: center;
+                padding-top: 10px;
+            }
+
+            .selectedProductsTitle {
+                font-family: 'Avenir-Book';
+                text-align: center;
+                font-weight: 700;
+            }
+
+            .selectedTagsInResults {
+                text-align: center;
+            }
+
+            .resultsSteps {
+                font-family: 'Stag Web';
+                letter-spacing: 1px;
+                font-size: 14px;
+                color: #999;
+                line-height: 14px;
+            }
+        }
+
+    }
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+
+
+<div class="container">
+    <div class="panel-group productStyleSelector" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 1:</span> Should we go out
+                                    or stay in?</strong></a>
+                            <p class="p-t-15">We have you covered from the first impression to the finishing touch.
+                                Where will your hardware be installed?</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <!--Check if first, and apply in, otherwise don't  -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4 col-product-5-in-row">
+                            <!--                            <img class="img img-responsive imgSelector" alt="style selection"
+                                                             src="Han-Solo-Main.jpg"
+                                                             title="Exterior"
+                                                             data-image-tag="Exterior">
+                                                        <p class="capitalize productSelectorTitle"> Exterior </p>-->
+                            <div class="styleFrame">
+                                <h3 class="productSelectorTitle textOnTopOfImgSelector">Exterior</h3>
+                                <img class="img img-responsive imgSelector" alt="style selection"
+                                     src="Han-Solo-Main.jpg"
+                                     title="Interior"
+                                     data-image-tag="schlage-americas:in-or-out/exterior">
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-product-5-in-row">
+                            <!--                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                                             title="Interior"
+                                                             data-image-tag="Interior">
+                                                        <p class="capitalize productSelectorTitle">Interior</p>-->
+                            <div class="styleFrame">
+                                <h3 class="productSelectorTitle textOnTopOfImgSelector">Interior</h3>
+                                <img class="img img-responsive imgSelector" alt="style selection"
+                                     src="Han-Solo-Main.jpg"
+                                     title="Interior"
+                                     data-image-tag="schlage-americas:in-or-out/interior">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 2:</span> Choose door
+                                    number two.</strong></a>
+                            <p class="p-t-15">Make a great impression without sacrificing your peace of mind. What type
+                                of door
+                                is this hardware for?</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Hall / Closet"
+                                 data-image-tag="schlage-americas:door-type/hall-closet">
+                            <p class="capitalize productSelectorTitle">Hall / Closet</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/bed-bath">
+                            <p class="capitalize productSelectorTitle">Bed / Bath</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/entrance">
+                            <p class="capitalize productSelectorTitle">Entrance</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/other">
+                            <p class="capitalize productSelectorTitle">Other</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/touchscreen">
+                            <p class="capitalize productSelectorTitle">Touchscreen</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/mechanical-front-door">
+                            <p class="capitalize productSelectorTitle">Mechanical Front Door</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/mechanical-front-door">
+                            <p class="capitalize productSelectorTitle">Mechanical Front Door</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/mechanical-back-side-door">
+                            <p class="capitalize productSelectorTitle">Mechanical Back/Side Door</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Bed / Bath"
+                                 data-image-tag="schlage-americas:door-type/electronic-back-side-door">
+                            <p class="capitalize productSelectorTitle">Electronic Back/Side Door</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 3:</span> It's your turn.</strong></a>
+                            <p class="p-t-15">Our knobs and levers provide the strength you expect at every turn, and
+                                both
+                                easily complement a handleset. For your personal style, do you prefer a knob or
+                                lever?</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Knob"
+                                 data-image-tag="schlage-americas:grip-preference/knob">
+                            <p class="capitalize productSelectorTitle">Knob</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Lever"
+                                 data-image-tag="schlage-americas:grip-preference/lever">
+                            <p class="capitalize productSelectorTitle">Lever</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 4:</span> Picture
+                                    this.</strong></a>
+                            <p class="p-t-15">Do you prefer clean lines, ornate or somewhere in-between? Which photo
+                                best
+                                represents your personal style?</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse4" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Traditional"
+                                 data-image-tag="schlage-americas:style/traditional">
+                            <p class="capitalize productSelectorTitle">Traditional</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Transitional"
+                                 data-image-tag="schlage-americas:style/transitional">
+                            <p class="capitalize productSelectorTitle">Transitional</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Transitional"
+                                 data-image-tag="schlage-americas:style/contemporary">
+                            <p class="capitalize productSelectorTitle">contemporary</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 5:</span> Let's talk
+                                    color.</strong></a>
+                            <p class="p-t-15">Our hardware finishes provide your home's style with just the right touch.
+                                Which
+                                color best complements your style preference?</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Black"
+                                 data-image-tag="schlage-americas:finish-tones/black">
+                            <p class="capitalize productSelectorTitle">Black</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Grey"
+                                 data-image-tag="schlage-americas:finish-tones/silver">
+                            <p class="capitalize productSelectorTitle">silver</p>
+
+                        </div>
+
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Grey"
+                                 data-image-tag="schlage-americas:finish-tones/gold">
+                            <p class="capitalize productSelectorTitle">gold</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <div class="row">
+                        <div class="col-xs-9 opaqTitle">
+                            <a>
+                                <strong class="accordionHeadings"><span class="blueText">Step 6:</span> Choose your
+                                    trim.</strong></a>
+                            <p class="p-t-15">Based on your selections, we recommend exploring products in our style
+                                category.<br/>
+                                Choose a trim to continue.</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="align-vertically productMoveAlong" style="display: none;">
+                                <span class="blueText selectionType"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6"
+                                   class="editSelection">[EDIT]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Greenwich"
+                                 data-image-tag="schlage-americas:trim/addison">
+                            <p class="capitalize productSelectorTitle">addison</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Greenwich"
+                                 data-image-tag="schlage-americas:trim/andover">
+                            <p class="capitalize productSelectorTitle">andover</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Greenwich"
+                                 data-image-tag="schlage-americas:trim/brookshire">
+                            <p class="capitalize productSelectorTitle">brookshire</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Greenwich"
+                                 data-image-tag="schlage-americas:trim/camelot">
+                            <p class="capitalize productSelectorTitle">camelot</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Greenwich"
+                                 data-image-tag="schlage-americas:trim/wakefield">
+                            <p class="capitalize productSelectorTitle">wakefield</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="schlage-americas:trim/greenwhich"
+                                 data-image-tag="Greenwich">
+                            <p class="capitalize productSelectorTitle">Greenwich</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Century"
+                                 data-image-tag="schlage-americas:trim/century">
+                            <p class="capitalize productSelectorTitle">Century</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Century"
+                                 data-image-tag="schlage-americas:trim/upland">
+                            <p class="capitalize productSelectorTitle">Upland</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Century"
+                                 data-image-tag="schlage-americas:trim/greyson">
+                            <p class="capitalize productSelectorTitle">Greyson</p>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+
+                            <img class="img img-responsive imgSelector" alt="style selection" src="Han-Solo-Main.jpg"
+                                 title="Century"
+                                 data-image-tag="schlage-americas:trim/collins">
+                            <p class="capitalize productSelectorTitle">Collins</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- END OF ACCORDION -->
+
+    <div class="container selectorResults" style="display: none;">
+        <div class="smallPadding">
+            <p class="resultsFont">You’ve chosen the following:</p>
+            <hr>
+
+            <div class="row selectedTagsRow">
+                <div class="addContentAfterMe"></div>
+
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-xs-12 selectedProductsTitle">
+                    <h3>Products based on your selection.</h3>
+                </div>
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="productResultsArea">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    let products;
+
+    $.getJSON('products.json', function(data) {
+        products = data; //TODO this takes a second to load, but I need to get this onload from htl, not ajax
+    });
+
+
+
+    function clearResultsArea() {
+        $(".selectedTagsRow div").slice(1).remove();
+        $(".productResultsArea").empty();
+        $(".selectorResults").slideUp();
+    }
+
+    function getAllProducts(arrayOfSelectedTags) {
+        //this'll be json parse
+        let jsonArray = JSON.stringify(arrayOfSelectedTags);
+
+        return "TEST";
+    }
+
+    function showResultsArea() {
+        let increment = 0;
+        let totalHTML = "";
+        let arrayOfSelectedTags = [];
+        //get relevant data and selected tags
+        $(".panel").each(function () {
+            increment++;
+            let startDiv = "<div class='col-xs-6 col-sm-4 col-md-2 selectedTagsInResults'><div class='giveLeftBorder'>";
+            let stepNum = "<p class='resultsSteps'>Step " + increment + ":</p>";
+            let tagName = "<p class='blueText imgSelector'>" + $(this).find(".selectionType").text() + "</p>";
+            let editBtn = "<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + increment + "\" class=\"editSelection removeResults\">[EDIT]</a>";
+            let endDiv = "</div></div>";
+            totalHTML += startDiv + stepNum + tagName + editBtn + endDiv;
+            arrayOfSelectedTags.push($(this).find(".imgSelector.selected").attr("data-image-tag"));
+        });
+        //get products from ajax call
+        let productsHTML = getAllProducts(arrayOfSelectedTags);
+        //add all html
+        $(".addContentAfterMe").after(totalHTML);
+        $(".productResultsArea").html(productsHTML);
+        $(".selectorResults").fadeIn();
+    }
+
+    //if they click edit in the results area, this will reset the results
+    $("body").on("click", ".removeResults", function () {
+        clearResultsArea();
+    });
+
+    //this moves the accordions along
+    $(".imgSelector").on("click", function () {
+        let selectedTag = $(this).attr("data-img-tag");
+        $(this).addClass("selected").removeClass("unselected");
+        $(this).parent().siblings().find("img").addClass("unselected").removeClass("selected");
+        let $panel = $(this).parents(".panel");
+        $panel.find(".opaqTitle").addClass("selected");
+        $panel.find(".productMoveAlong").fadeIn();
+        $panel.find(".selectionType").text($(this).attr("title"));
+        //if last accordion, show results area
+        if ($panel.next().find(".editSelection").length) {
+            $panel.next().find(".editSelection").click();
+
+            for(let i in products.pageList){//TODO check all product tags, and check all past tags with all possible future tags
+                console.log(products.pageList[i])
+            }
+
+
+        } else {
+            $(".panel-collapse.collapse").removeClass("in");
+            clearResultsArea();
+            showResultsArea();
+        }
+
+    });
+
+    //this resets the accordion on the panel where they click edit
+    $(".editSelection").on("click", function () {
+        let $panel = $(this).parents(".panel");
+        if ($(this).siblings(".selectionType").text() != "") {
+            $panel.nextAll().find("img").removeClass("selected").removeClass("unselected");
+            $panel.nextAll().find(".selectionType").text("");
+            $panel.find(".opaqTitle").removeClass("selected");
+            $panel.nextAll().find(".opaqTitle").removeClass("selected");
+            $panel.nextAll().find(".productMoveAlong").fadeOut();
+        }
+        clearResultsArea();
+    });
+
+
+</script>
+
+</body>
+</html>
