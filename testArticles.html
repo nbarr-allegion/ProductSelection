@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta charset="UTF-8">
+    <title>Articles UI Example</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .cardArticle {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .cardArticle:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .cardArticle {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .cardArticle img {
+            border-radius: 5px 5px 0 0;
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .paddingCardContent {
+            padding: 15px;
+        }
+
+        .paddingCardBottom {
+            padding: 0 15px 15px 15px;
+        }
+
+        .moveRight {
+            float: right;
+        }
+
+        .maxContentHeight {
+            height: 10em;
+            overflow: hidden;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+        }
+
+        .maxContentHeight:after {
+            content: "";
+            text-align: right;
+            position: absolute;
+            bottom: 50px;
+            right: 22px;
+            width: 70%;
+            height: 2em;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
+        }
+
+        .marginTopNBottom {
+            margin: 10px 0 10px 0;
+        }
+
+        /* The radio */
+        .radioBtnContainer {
+
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        /* Hide the browser's default radio button */
+        .radioBtnContainer input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom radio button */
+        .checkround {
+
+            position: absolute;
+            top: 6px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 50%;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .radioBtnContainer input:checked ~ .checkround {
+            background-color: #fff;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkround:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .radioBtnContainer input:checked ~ .checkround:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .radioBtnContainer .checkround:after {
+            left: 2px;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #55C3F8;
+
+        }
+
+        /* The check */
+        .checkboxBtnContainer {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            padding-right: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .checkboxBtnContainer input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 3px;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #fff;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        label {
+            font-weight: initial;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .checkboxBtnContainer input:checked ~ .checkmark {
+            background-color: #fff;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .checkboxBtnContainer input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .checkboxBtnContainer .checkmark:after {
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid;
+            border-color: #55C3F8;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .pushDownSlightly {
+            padding-top: 3px;
+        }
+
+        .affix {
+            z-index: 9999 !important;
+        }
+        @media (max-width: 767px) {
+            .affix {
+                position: static;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-3 col-lg-2">
+            <div data-spy="affix" data-offset-top="0">
+                <h3>Filter By Date</h3>
+                <hr/>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByDate" value="All" name="radioFilterByDate">
+                    <div class="pushDownSlightly">All</div>
+                    <span class="checkround"></span>
+                </label>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByDate" value="2018" name="radioFilterByDate">
+                    <div class="pushDownSlightly">2018</div>
+                    <span class="checkround"></span>
+                </label>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByDate" value="2017" name="radioFilterByDate">
+                    <div class="pushDownSlightly">2017</div>
+                    <span class="checkround"></span>
+                </label>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByDate" value="2016" name="radioFilterByDate">
+                    <div class="pushDownSlightly">2016</div>
+                    <span class="checkround"></span>
+                </label>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByDate" value="2015" name="radioFilterByDate">
+                    <div class="pushDownSlightly">2015</div>
+                    <span class="checkround"></span>
+                </label>
+
+                <h3>Filter By Type</h3>
+                <hr/>
+
+                <label class="checkboxBtnContainer">
+                    <input type="checkbox" class="checkboxFilterByTag" value="News & Features">News & Features
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkboxBtnContainer">
+                    <input type="checkbox" class="checkboxFilterByTag" value="Investor Relations">Investor Relations
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkboxBtnContainer">
+                    <input type="checkbox" class="checkboxFilterByTag" value="Press Release">Press Release
+                    <span class="checkmark"></span>
+                </label>
+
+
+                <h3>Filter Date Order</h3>
+                <hr/>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByOrderUp" value="Ascending" name="orderDates">
+                    <div class="pushDownSlightly">Ascending</div>
+                    <span class="checkround"></span>
+                </label>
+                <label class="radioBtnContainer">
+                    <input type="radio" class="radioFilterByOrderDown" value="Descending" name="orderDates">
+                    <div class="pushDownSlightly">Descending</div>
+                    <span class="checkround"></span>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="col-sm-9 col-lg-10">
+            <div class="row" id="articlesForAllegion">
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.Exposing the hidden elements of construction such as steel
+                                    beams and
+                                    lighting
+                                    wiring can create a life of its own, build dramatic styles and make a bold
+                                    statement. To
+                                    enhance
+                                    this industrial look, embrace the beauty of raw and unfinished metals such as
+                                    steel
+                                    and
+                                    brass in any
+                                    interior commercial and residential space.Exposing the hidden elements of
+                                    construction such
+                                    as steel
+                                    beams and lighting wiring can create a life of its own, build dramatic styles
+                                    and
+                                    make a
+                                    bold
+                                    statement. To enhance this industrial look, embrace the beauty of raw and
+                                    unfinished
+                                    metals
+                                    such as
+                                    steel and brass in any interior commercial and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">News & Features</div>
+                            <label class="filterByDate">12-7-2018</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">11-6-2018</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">10-7-2017</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.Exposing the hidden elements of construction such as steel
+                                    beams and
+                                    lighting
+                                    wiring can create a life of its own, build dramatic styles and make a bold
+                                    statement. To
+                                    enhance
+                                    this industrial look, embrace the beauty of raw and unfinished metals such as
+                                    steel
+                                    and
+                                    brass in any
+                                    interior commercial and residential space.Exposing the hidden elements of
+                                    construction such
+                                    as steel
+                                    beams and lighting wiring can create a life of its own, build dramatic styles
+                                    and
+                                    make a
+                                    bold
+                                    statement. To enhance this industrial look, embrace the beauty of raw and
+                                    unfinished
+                                    metals
+                                    such as
+                                    steel and brass in any interior commercial and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">12-7-2018</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">12-7-2017</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">6-7-2015</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.Exposing the hidden elements of construction such as steel
+                                    beams and
+                                    lighting
+                                    wiring can create a life of its own, build dramatic styles and make a bold
+                                    statement. To
+                                    enhance
+                                    this industrial look, embrace the beauty of raw and unfinished metals such as
+                                    steel
+                                    and
+                                    brass in any
+                                    interior commercial and residential space.Exposing the hidden elements of
+                                    construction such
+                                    as steel
+                                    beams and lighting wiring can create a life of its own, build dramatic styles
+                                    and
+                                    make a
+                                    bold
+                                    statement. To enhance this industrial look, embrace the beauty of raw and
+                                    unfinished
+                                    metals
+                                    such as
+                                    steel and brass in any interior commercial and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">3-8-2015</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">9-16-2016</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">10-7-2017</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.Exposing the hidden elements of construction such as steel
+                                    beams and
+                                    lighting
+                                    wiring can create a life of its own, build dramatic styles and make a bold
+                                    statement. To
+                                    enhance
+                                    this industrial look, embrace the beauty of raw and unfinished metals such as
+                                    steel
+                                    and
+                                    brass in any
+                                    interior commercial and residential space.Exposing the hidden elements of
+                                    construction such
+                                    as steel
+                                    beams and lighting wiring can create a life of its own, build dramatic styles
+                                    and
+                                    make a
+                                    bold
+                                    statement. To enhance this industrial look, embrace the beauty of raw and
+                                    unfinished
+                                    metals
+                                    such as
+                                    steel and brass in any interior commercial and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">5-8-2018</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">9-16-2017</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 marginTopNBottom articleFilter">
+                    <div class="cardArticle">
+
+                        <a href="#"><img src="Han-Solo-Main.jpg " class="img-responsive" alt="Han Solo"></a>
+                        <div class="paddingCardContent">
+                            <h4>
+                                <b>Legge’s Luxe. Portfolio of Finishes – Embracing brass</b>
+                            </h4>
+                            <hr>
+                            <div class="maxContentHeight">
+                                <p>Exposing the hidden elements of construction such as steel beams and lighting
+                                    wiring
+                                    can
+                                    create a
+                                    life of its own, build dramatic styles and make a bold statement. To enhance
+                                    this
+                                    industrial
+                                    look,
+                                    embrace the beauty of raw and unfinished metals such as steel and brass in any
+                                    interior
+                                    commercial
+                                    and residential space.</p>
+                            </div>
+                        </div>
+                        <div class="paddingCardBottom">
+                            <div class="hidden tagName">Investor Relations</div>
+                            <label class="filterByDate">7-17-2015</label>
+                            <a href="#" class="readMoreBtn moveRight">Read More &#8250;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="pagination">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    var numOfArticlesPerPage = 10; // this will be set by author
+    $(document).ready(function () {
+        $(".radioFilterByDate").on("click", function () {
+            filterArticles();
+        });
+        $(".checkboxFilterByTag").on("click", function () {
+            filterArticles();
+        });
+
+        createPaginationPagesInitial(numOfArticlesPerPage);
+        $(document.body).on("click", ".moveOntoDesiredPage", function () {
+            var nextDiv = $(this).attr('href');
+            $(".pagination").children(".active").removeClass("active");
+            $(this).parent().addClass("active");
+            $(".articleFilter").hide();
+            $(nextDiv).children(".articleFilter").not("[data-filter=hidden]").fadeIn();
+        });
+
+
+        $('.radioFilterByOrderDown').on('click', function () {
+            filterArticles();
+        });
+
+        $('.radioFilterByOrderUp').on('click', function () {
+            filterArticles();
+        });
+
+    });
+
+    function orderArticlesUp(){
+        var $divs = $(".articleFilter");
+        var ascendingOrderedDates = $divs.sort(function (a, b) {
+            return Date.parse($(a).find(".filterByDate").text()) - Date.parse($(b).find(".filterByDate").text());
+        });
+        $("#articlesForAllegion").html(ascendingOrderedDates);
+
+
+    }
+    function orderArticlesDown(){
+        var $divs = $(".articleFilter");
+        var descendingOrderedDates = $divs.sort(function (a, b) {
+            return Date.parse($(b).find(".filterByDate").text()) - Date.parse($(a).find(".filterByDate").text());
+        });
+        $("#articlesForAllegion").html(descendingOrderedDates);
+
+    }
+
+    function filterArticles() {
+        if($('.radioFilterByOrderUp').is(':checked')){
+            orderArticlesUp();
+        }
+        if($('.radioFilterByOrderDown').is(':checked')){
+            orderArticlesDown();
+        }
+        var arrayOfSelectedTags = [];
+        var dateValueFromRadio = $("input[name='radioFilterByDate']:checked").val();
+
+        $('input.checkboxFilterByTag:checkbox:checked').each(function () {
+            arrayOfSelectedTags.push($(this).val());
+        });
+        var amountOfTags = arrayOfSelectedTags.length;
+        if (dateValueFromRadio == "All" || dateValueFromRadio == null) {
+            if (amountOfTags == 0) {
+                $(".articleFilter").fadeIn();
+                createPaginationForFiltered(numOfArticlesPerPage);
+            } else {
+                $(".articleFilter").hide();
+
+                for (var i = 0; i < amountOfTags; i++) {
+                    var selectedTag = arrayOfSelectedTags[i];
+                    $(".tagName").filter(function () {
+                        var tagNameFromArticle = $(this).text();
+                        var areTheTagsEqual = tagNameFromArticle.includes(selectedTag);
+                        if (areTheTagsEqual) {
+                            $(this).parents(".articleFilter").fadeIn();
+                        }
+                    });
+                }
+                createPaginationForFiltered(numOfArticlesPerPage);
+            }
+        }
+        else {
+            $(".articleFilter").hide();
+            $(".filterByDate").filter(function () {
+                var dateValueFromArticle = $(this).text();
+                var areTheDatesEqual = dateValueFromArticle.includes(dateValueFromRadio);
+                if (areTheDatesEqual) {
+                    if (amountOfTags == 0) {
+                        $(this).parents(".articleFilter").fadeIn();
+                        createPaginationForFiltered(numOfArticlesPerPage);
+                    } else {
+                        for (var i = 0; i < amountOfTags; i++) {
+                            if ($(this).siblings(".tagName").text().includes(arrayOfSelectedTags[i])) {
+                                $(this).parents(".articleFilter").fadeIn();
+                                createPaginationForFiltered(numOfArticlesPerPage);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function createPaginationPagesInitial(numOfArticlesPerPage) {
+        var divs = $(".articleFilter");
+        createPaginationButtons(divs, numOfArticlesPerPage);
+    }
+
+    function createPaginationForFiltered(numOfArticlesPerPage) {
+        $('.articlePage').contents().unwrap();
+        $(".pagination").empty();
+        $(".articleFilter").removeData("filter");
+        $(".articleFilter").each(function () {
+            if ($(this).css("display") == "none") {
+                $(this).attr("data-filter", "hidden");
+            } else {
+                $(this).removeAttr("data-filter");
+            }
+        });
+
+        var divs = $(".articleFilter").not("[data-filter=hidden]");
+        createPaginationButtons(divs, numOfArticlesPerPage);
+
+    }
+
+    function createPaginationButtons(divs, numOfArticlesPerPage) {
+        var counterForPages = 0;
+        var divToShow;
+        for (var i = 0; i < divs.length; i += numOfArticlesPerPage) {
+            counterForPages++;
+            divs.slice(i, i + numOfArticlesPerPage).wrapAll("<div id='articlePagination" + counterForPages + "'  class='articlePage'></div>");
+            if (i == 0) {
+                divToShow = "#articlePagination" + counterForPages;
+                $(".pagination").append("<li class='active'><a class='moveOntoDesiredPage' href='" + divToShow + "' >" + counterForPages + "</a></li>");
+            } else {
+                $(".pagination").append("<li><a class='moveOntoDesiredPage' href='#articlePagination" + counterForPages + "'>" + counterForPages + "</a></li>");
+            }
+        }
+        $(divToShow).siblings().children(".articleFilter").hide();
+    }
+
+</script>
+
+</html>
