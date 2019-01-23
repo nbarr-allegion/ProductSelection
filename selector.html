@@ -595,7 +595,7 @@
 
     </div><!-- END OF ACCORDION -->
 
-    <div class="container selectorResults" style="display: none;">
+    <div class="container selectorResults">
         <div class="smallPadding">
             <p class="resultsFont">You’ve chosen the following:</p>
             <hr>
@@ -617,11 +617,66 @@
                 <div class="col-sm-12">
                     <div class="productResultsArea">
 
+
+
+                        <div class="row" style="margin-bottom: 10px;margin-top: 10px;">
+                            <div class="col-xs-3">
+                                <img src="Han-Solo-Main.jpg"/>
+                            </div>
+                            <div class="col-xs-9">
+                                <h2 style="padding-bottom: 15px; margin-top: 0;">Title</h2>
+                                <p><strong>Finish</strong> [7 total]</p>
+
+
+                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active" style="width: 33%">
+                                            <img src="Han-Solo-Main.jpg" alt="Chania">
+                                        </div>
+
+                                        <div class="item active"  style="width: 33%">
+                                            <img src="Han-Solo-Main.jpg" alt="Chania">
+                                        </div>
+
+                                        <div class="item active" style="width: 33%">
+                                            <img src="Han-Solo-Main.jpg" alt="Flower">
+                                        </div>
+
+                                        <div class="item" style="width: 33%">
+                                            <img src="Han-Solo-Main.jpg"alt="Flower">
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <hr/>
+                        <!--End Test-->
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </div>
@@ -650,10 +705,55 @@
     }
 
     function getAllProducts(arrayOfSelectedTags) {
-        //this'll be json parse
-        let jsonArray = JSON.stringify(arrayOfSelectedTags);
+        //this'll be json parse  let jsonArray = JSON.stringify(arrayOfSelectedTags);
+        let productsToBeShown = [];
+
+        for (let k in products.pageList) {
+            let matches = 0;
+            for (let j in arrayOfSelectedTags) {
+                if (products.pageList[k].tags != null && products.pageList[k].tags.indexOf(arrayOfSelectedTags[j]) > -1) {
+                    matches++;
+                }
+            }
+            if (matches == arrayOfSelectedTags.length) {
+                productsToBeShown.push(products.pageList[k]);
+            }
+        }
+
+
+
+
+
+
+        console.log(productsToBeShown);
 
         return "test";
+    }
+
+    function hideOrShowNextSelection(nextPossibleTags) {
+        let hideElements = [];
+
+        for (let i in nextPossibleTags) {
+            let matches = 0;
+
+            for (let j in arrayOfSelectedTags) {
+
+                for (let k in products.pageList) { // TODO may need to put this loop in the middle
+                    if (products.pageList[k].tags != null && products.pageList[k].tags.indexOf(arrayOfSelectedTags[j]) > -1 && products.pageList[k].tags.indexOf(nextPossibleTags[i]) > -1) {
+                        matches++;
+
+                    }
+                }
+
+            }
+            if (matches == 0) {
+                hideElements.push(nextPossibleTags[i]);
+            }
+            console.log(matches + " matches for " +nextPossibleTags[i]);
+
+        }
+        console.log(hideElements)
+
     }
 
     function showResultsArea() {
@@ -672,6 +772,9 @@
         //get products from ajax call
         let productsHTML = getAllProducts(arrayOfSelectedTags);
 
+
+
+
         //add all html
         $(".addContentAfterMe").after(totalHTML);
         $(".productResultsArea").html(productsHTML);
@@ -683,26 +786,6 @@
         clearResultsArea();
     });
 
-    function hideOrShowNextSelection(nextPossibleTags) {
-        let hideElements = [];
-        for (let i in nextPossibleTags) {
-            let matches = 0;
-            for (let j in arrayOfSelectedTags) {
-                let matches2 = 0;
-                for (let k in products.pageList) {
-
-                    if (products.pageList[k].tags != null && products.pageList[k].tags.indexOf(arrayOfSelectedTags[j]) > -1 && products.pageList[k].tags.indexOf(nextPossibleTags[i]) > -1) {
-                        // console.log(products.pageList[k].tags);
-                        // console.log("matches " + arrayOfSelectedTags[j] + " and " + nextPossibleTags[i]);
-                        matches++;
-                        matches2++;
-                    }
-                }
-                console.log(matches2 + " matches2 inside of " + arrayOfSelectedTags[j] );
-            }
-            console.log(matches + " matches inside of " + nextPossibleTags[i] );
-        }
-    }
 
     //this moves the accordions along
     $(".imgSelector").on("click", function () {
