@@ -19,11 +19,38 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 <style type="text/less">
-    .blueText {
+
+
+
+
+
+
+
+    //specific for schlage
+    .editSelectionText {
         color: #0081C5;
     }
 
-    .panel-heading {
+    .selectionType {
+        color: #0082c7;
+        font-family: 'Stag Web';
+        letter-spacing: 1px;
+        font-size: 14px;
+        padding-bottom: 0;
+        line-height: 14px;
+        display: block;
+        word-break: break-all;
+    }
+    .selectorResults {
+        border-color: #0081c6 #e5e5e5 #e5e5e5 #e5e5e5;
+    }
+        .panel .panel-body img.selected {
+        border: 3px solid #64cbe8;
+    }
+    //end schlage specific css
+
+
+        .panel-heading {
         background-color: transparent !important;
         border-right: unset !important;
         border-left: unset !important;
@@ -51,10 +78,6 @@
                 cursor: pointer;
                 margin: 0 auto;
                 transition: opacity .25s;
-
-                &.selected {
-                    border: 3px solid #64cbe8;
-                }
 
                 &.unselected {
                     opacity: 0.3;
@@ -103,15 +126,7 @@
         color: black;
     }
 
-    .selectionType {
-        color: #0082c7;
-        font-family: 'Stag Web';
-        letter-spacing: 1px;
-        font-size: 14px;
-        padding-bottom: 0;
-        line-height: 14px;
-        display: block;
-    }
+
 
     .editSelection {
         font-family: 'Avenir-Book';
@@ -134,6 +149,8 @@
         }
     }
 
+
+
     .capitalize {
         text-align: center;
         text-transform: uppercase;
@@ -144,7 +161,6 @@
 
     .selectorResults {
         border-width: 10px 1px 1px 1px;
-        border-color: #0081c6 #e5e5e5 #e5e5e5 #e5e5e5;
         border-style: solid;
 
         .smallPadding {
@@ -181,6 +197,95 @@
         }
 
     }
+    .mainProdImg {
+        width: 164px;
+        height: 164px;
+        @media screen and (max-width: 479px){
+            width: 134px;
+            height: 134px;
+        }
+    }
+
+    .currentFinish{
+        text-transform: capitalize;
+    }
+
+    .mainTitle{
+        @media (max-width:767px){
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+
+    //carousel
+    .multi-item-carousel {
+        width: 125px;
+
+        .carousel-inner {
+            .img-rounded {
+                border-radius: 50%;
+                height: 25px;
+                width: 25px;
+            }
+
+            a {
+                cursor: pointer;
+            }
+
+            > .item {
+                transition: 500ms ease-in-out left;
+            }
+
+            .active {
+                &.left {
+                    left: -33%;
+                }
+
+                &.right {
+                    left: 33%;
+                }
+            }
+
+            .next {
+                left: 33%;
+            }
+
+            .prev {
+                left: -33%;
+            }
+
+            @media all and (transform-3d), (-webkit-transform-3d) {
+                > .item {
+                    // use your favourite prefixer here
+                    transition: 500ms ease-in-out left;
+                    transition: 500ms ease-in-out all;
+                    backface-visibility: visible;
+                    transform: none !important;
+                }
+            }
+        }
+
+        .carousel-control {
+            &.left, &.right {
+                background-image: none;
+                color: black;
+
+                span {
+                    font-size: 20px;
+                }
+            }
+
+            &.left {
+                margin-left: -25px;
+            }
+
+            &.right {
+                margin-right: -35px;
+            }
+        }
+    }
+
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
@@ -194,14 +299,14 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 1:</span> Should we go out
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 1:</span> Should we go out
                                     or stay in?</strong></a>
                             <p class="p-t-15">We have you covered from the first impression to the finishing touch.
                                 Where will your hardware be installed?</p>
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -252,7 +357,7 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 2:</span> Choose door
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 2:</span> Choose door
                                     number two.</strong></a>
                             <p class="p-t-15">Make a great impression without sacrificing your peace of mind. What type
                                 of door
@@ -260,7 +365,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -346,7 +451,7 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 3:</span> It's your turn.</strong></a>
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 3:</span> It's your turn.</strong></a>
                             <p class="p-t-15">Our knobs and levers provide the strength you expect at every turn, and
                                 both
                                 easily complement a handleset. For your personal style, do you prefer a knob or
@@ -354,7 +459,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -390,7 +495,7 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 4:</span> Picture
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 4:</span> Picture
                                     this.</strong></a>
                             <p class="p-t-15">Do you prefer clean lines, ornate or somewhere in-between? Which photo
                                 best
@@ -398,7 +503,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -442,7 +547,7 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 5:</span> Let's talk
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 5:</span> Let's talk
                                     color.</strong></a>
                             <p class="p-t-15">Our hardware finishes provide your home's style with just the right touch.
                                 Which
@@ -450,7 +555,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -494,7 +599,7 @@
                     <div class="row">
                         <div class="col-xs-9 opaqTitle">
                             <a>
-                                <strong class="accordionHeadings"><span class="blueText">Step 6:</span> Choose your
+                                <strong class="accordionHeadings"><span class="editSelectionText">Step 6:</span> Choose your
                                     trim.</strong></a>
                             <p class="p-t-15">Based on your selections, we recommend exploring products in our style
                                 category.<br/>
@@ -502,7 +607,7 @@
                         </div>
                         <div class="col-xs-3">
                             <div class="align-vertically productMoveAlong" style="display: none;">
-                                <span class="blueText selectionType"></span>
+                                <span class="editSelectionText selectionType"></span>
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse6"
                                    class="editSelection">[EDIT]</a>
                             </div>
@@ -618,59 +723,6 @@
                     <div class="productResultsArea">
 
 
-
-                        <div class="row" style="margin-bottom: 10px;margin-top: 10px;">
-                            <div class="col-xs-3">
-                                <img src="Han-Solo-Main.jpg"/>
-                            </div>
-                            <div class="col-xs-9">
-                                <h2 style="padding-bottom: 15px; margin-top: 0;">Title</h2>
-                                <p><strong>Finish</strong> [7 total]</p>
-
-
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-                                    <!-- Wrapper for slides -->
-                                    <div class="carousel-inner" role="listbox">
-                                        <div class="item active" style="width: 33%">
-                                            <img src="Han-Solo-Main.jpg" alt="Chania">
-                                        </div>
-
-                                        <div class="item active"  style="width: 33%">
-                                            <img src="Han-Solo-Main.jpg" alt="Chania">
-                                        </div>
-
-                                        <div class="item active" style="width: 33%">
-                                            <img src="Han-Solo-Main.jpg" alt="Flower">
-                                        </div>
-
-                                        <div class="item" style="width: 33%">
-                                            <img src="Han-Solo-Main.jpg"alt="Flower">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Left and right controls -->
-                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <hr/>
-                        <!--End Test-->
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -678,10 +730,40 @@
     </div>
 
 
-
 </div>
 
 <script>
+    $("body").on("click",".finishImg",function () {
+        let newFinish = $(this).parent().attr("data-title");
+        let newSrcUrl = $(this).parent().attr("data-url");
+        $(this).parents(".carousel").siblings(".currentFinish").text(newFinish);
+        $(this).parents(".mainOptions").siblings(".mainImg").find(".mainProdImg").attr("src", newSrcUrl);
+
+    });
+
+    function instantiateCarousel() {
+        // Instantiate the Bootstrap carousel
+        $('.multi-item-carousel').carousel({
+            interval: false
+        });
+        // for every slide in carousel, copy the next slide's item in the slide.
+        // Do the same for the next, next item.
+        $('.multi-item-carousel .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            if (next.next().length > 0) {
+                next.next().children(':first-child').clone().appendTo($(this));
+            } else {
+                $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+            }
+        });
+    }
+
+
     let products;
     let arrayOfSelectedTags = [];
 
@@ -719,41 +801,92 @@
                 productsToBeShown.push(products.pageList[k]);
             }
         }
+        let productString = "";
+
+        for (let i in productsToBeShown) {
+            let startString = "                        <div class=\"row\" style=\"margin-bottom: 10px;margin-top: 10px;\">\n" +
+                "                            <div class=\"col-xs-6 col-sm-3 mainImg\">\n" +
+                "                                <img class='mainProdImg' src=\"" + productsToBeShown[i].imageLink1 + "/jcr:content/renditions/cq5dam.thumbnail.319.319.png\"/>\n" +
+                    "<p class='hidden visible-xs visible-sm' style='padding-: 10px'>Tap for details and options</p>"+
+                "                            </div>\n" +
+                "                            <div class=\"col-xs-6 col-sm-9 mainOptions\">\n" +
+                "                                <h2 class='mainTitle' style=\"padding-bottom: 15px; margin-top: 0;\">" + productsToBeShown[i].title + "</h2>\n" +
+                "                                <p class='hidden-xs hidden-sm'><strong>Finish</strong> [" + productsToBeShown[i].container.replace("finish", "") + " Total]</p>" +
+                "                                <p class='currentFinish  hidden-xs hidden-sm'></p>" +
+                "                                <div id=\"theCarousel" + i + "\" class=\"carousel slide multi-item-carousel hidden-xs hidden-sm\">\n" +
+                "                                    <!-- Wrapper for slides -->\n" +
+                "                                    <div class=\"carousel-inner\" role=\"listbox\">\n";
+
+            let finishTypeStrings = "";
+            let maxNumberOfFinishes = 12 + 1;//TODO Set by author? 12 for schlage
+            for (let j = 1; j < maxNumberOfFinishes; j++) {
+                let primeImg = "primaryImage" + j;
+                if (productsToBeShown[i][primeImg] != null && productsToBeShown[i][primeImg] !== undefined && productsToBeShown[i][primeImg] != "") {
+                    let active = "";
+                    if (j === 1) {
+                        active = "active";
+                    }
+                    finishTypeStrings += "<div class=\"item " + active + "\" style=\"\">\n" +
+                        "                                            <div class=\"col-xs-4\">\n" +
+                        "                                                <a data-url=\"" + productsToBeShown[i]["imageLink" + j] + "\" data-title=\"" + productsToBeShown[i][primeImg].replace(/.*\d\-/, "").replace(/\-/, " ").replace(/\..*/, "").replace(/.*\//,"") + "\">\n" +
+                        "                                                    <img class='finishImg img-rounded' src=\"" + productsToBeShown[i][primeImg] + "/_jcr_content/renditions/cq5dam.thumbnail.48.48.png\" alt=\"Product Finish Type\" >\n" +
+                        "                                                </a>\n" +
+                        "                                            </div>\n" +
+                        "                                        </div>\n";console.log(productsToBeShown[i]["imageLink" + j])
+                }
 
 
+            }
 
 
+            let endString = "                      </div>\n" +
+                "                                    <!-- Left and right controls -->\n" +
+                "                                    <a class=\"left carousel-control\" href=\"#theCarousel"+i+ "\" role=\"button\" data-slide=\"prev\">\n" +
+                "                                        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>\n" +
+                "                                        <span class=\"sr-only\">Previous</span>\n" +
+                "                                    </a>\n" +
+                "                                    <a class=\"right carousel-control\" href=\"#theCarousel" + i+ "\" role=\"button\"\n" +
+                "                                       data-slide=\"next\">\n" +
+                "                                        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>\n" +
+                "                                        <span class=\"sr-only\">Next</span>\n" +
+                "                                    </a>\n" +
+                "                                </div>\n" +
+                "                            </div>\n" +
+                "                        </div>\n" +
+                "                        <hr/>";
+
+            productString += startString + finishTypeStrings + endString;
+        }
 
 
-        console.log(productsToBeShown);
-
-        return "test";
+        return productString;
     }
 
     function hideOrShowNextSelection(nextPossibleTags) {
         let hideElements = [];
-
-        for (let i in nextPossibleTags) {
-            let matches = 0;
-
-            for (let j in arrayOfSelectedTags) {
-
-                for (let k in products.pageList) { // TODO may need to put this loop in the middle
-                    if (products.pageList[k].tags != null && products.pageList[k].tags.indexOf(arrayOfSelectedTags[j]) > -1 && products.pageList[k].tags.indexOf(nextPossibleTags[i]) > -1) {
+        for (let i in nextPossibleTags) { // these are the tags for the next section
+            let nextTagMatches = 0;
+            for (let k in products.pageList) { //iterate through all products against current selected tags.
+                let matches = 0;
+                for (let j in arrayOfSelectedTags) {
+                    if (products.pageList[k].tags != null && products.pageList[k].tags.indexOf(arrayOfSelectedTags[j]) > -1) {
                         matches++;
-
                     }
                 }
-
+                if (matches == arrayOfSelectedTags.length) { // if all the current selected tags were found in the product, check next possible tag
+                    if (products.pageList[k].tags.indexOf(nextPossibleTags[i]) > -1) {
+                        nextTagMatches++;
+                    }
+                }
             }
-            if (matches == 0) {
-                hideElements.push(nextPossibleTags[i]);
+            if (nextTagMatches == 0) {//if there arent any matches, hide it.
+                hideElements.push(nextPossibleTags[i])
             }
-            console.log(matches + " matches for " +nextPossibleTags[i]);
 
         }
-        console.log(hideElements)
-
+        for (let i in hideElements) {
+            $("[data-image-tag='" + hideElements[i] + "']").parent().hide();
+        }
     }
 
     function showResultsArea() {
@@ -764,7 +897,7 @@
             increment++;
             let startDiv = "<div class='col-xs-6 col-sm-4 col-md-2 selectedTagsInResults'><div class='giveLeftBorder'>";
             let stepNum = "<p class='resultsSteps'>Step " + increment + ":</p>";
-            let tagName = "<p class='blueText imgSelector'>" + $(this).find(".selectionType").text() + "</p>";
+            let tagName = "<p class='editSelectionText imgSelector'>" + $(this).find(".selectionType").text() + "</p>";
             let editBtn = "<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + increment + "\" class=\"editSelection removeResults\">[EDIT]</a>";
             let endDiv = "</div></div>";
             totalHTML += startDiv + stepNum + tagName + editBtn + endDiv;
@@ -773,12 +906,11 @@
         let productsHTML = getAllProducts(arrayOfSelectedTags);
 
 
-
-
         //add all html
         $(".addContentAfterMe").after(totalHTML);
         $(".productResultsArea").html(productsHTML);
         $(".selectorResults").fadeIn();
+        instantiateCarousel();
     }
 
     //if they click edit in the results area, this will reset the results
@@ -818,11 +950,14 @@
     $(".editSelection").on("click", function () {
         let $panel = $(this).parents(".panel");
         if ($(this).siblings(".selectionType").text() != "") {
+            $panel.find("img").removeClass("selected").removeClass("unselected");
             $panel.nextAll().find("img").removeClass("selected").removeClass("unselected");
             $panel.nextAll().find(".selectionType").text("");
             $panel.find(".opaqTitle").removeClass("selected");
             $panel.nextAll().find(".opaqTitle").removeClass("selected");
             $panel.nextAll().find(".productMoveAlong").fadeOut();
+            $panel.nextAll().find(".panel-body div").show();
+
             getSelectedTags();
         }
         clearResultsArea();
