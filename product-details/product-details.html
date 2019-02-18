@@ -1,0 +1,89 @@
+<div data-sly-test="${(wcmmode.edit || wcmmode.design)}" class="cq-placeholder"
+     data-emptytext="Configure Product Details in EDIT Mode"></div>
+
+<sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <sly data-sly-call="${clientlib.css @ categories='allegion-core.product-details'}"/>
+</sly>
+
+<div class="clearfix">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 productCarousel">
+                <sly data-sly-resource="${@path='carousel',resourceType='allegion-core/components/common/carousel'}"></sly> <!--/*TODO We'll show the main prod images here*/-->
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="alle-product-Title">${properties.productName}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 class="alle-product-sku">${properties.skuNumber}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alle-product-short-desc">
+                            <sly data-sly-resource="${@path='listlinks',resourceType='allegion-core/components/common/listlinks'}"></sly> <!--/*TODO We'll use this for any icons that need shown*/-->
+                        </div><!-- CustomRichText? -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alle-product-short-desc">
+                            <sly data-sly-resource="${@path='customrte2',resourceType='allegion-core/components/common/customrte'}"></sly><!--/*TODO We can use this for any random description*/-->
+                        </div><!-- CustomRichText? -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 alle-finish-carousel">
+                        <!-- Product Variations/ image thumbnails  (another, specially configured and styled, carousel)? -->  <!--/*TODO We'll use the carousel I made for the product selector finishes here*/-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 alle-buy-button">
+                        <sly data-sly-resource="${@path='button-link',resourceType='allegion-core/components/common/button-link'}"></sly> <!--/*TODO This'll be the buy button / Find, or it can be pricespyder?*/-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 alle-xtra-parsys">
+                <div data-sly-resource="${@ path='par2', resourceType='wcm/foundation/components/parsys'}"></div> <!--/*TODO if we really need any more things in here*/-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 prod-comp">
+                <sly data-sly-resource="${@path='product-comparison',resourceType='allegion-core/components/product/product-comparison'}"></sly> <!--/*TODO The product comparison component still needs configuring*/-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 product-detail-accordion">
+                <sly data-sly-resource="${@path='accordian-tab',resourceType='allegion-core/components/common/accordian-tab'}"></sly> <!--/* TODO this will be where all of the descriptions and specifics go for the component*/-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 xtra-xtra-rte">
+                <sly data-sly-resource="${@path='customrte',resourceType='allegion-core/components/common/customrte'}"></sly> <!--/*TODO Any additional details could go here*/-->
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 xtra-xtra-parsys">
+                <div data-sly-resource="${@ path='par', resourceType='wcm/foundation/components/parsys'}"></div> <!--/*TODO if we really need any more things in here*/-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let allCSSampleImgs = "${properties.allFinishesSampleImgs @context='scriptString'}";
+    let allCSSFinishImgs = "${properties.allFinishes @context='scriptString'}";
+    let rating = "${properties.productRating @context='scriptString'}";
+    //TODO Perform operations here to add them to the page, not sure what the highest possible rating is, 5 maybe?
+
+</script>

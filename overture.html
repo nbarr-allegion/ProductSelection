@@ -1,0 +1,1241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Overtur</title>
+
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+</head>
+<style>
+    html, body {
+        margin:0;
+        padding:0;
+        font-family:"Roboto", sans-serif;
+    }
+
+    .container {
+        width:100%;
+        max-width:1020px;
+        padding:0 50px;
+        margin:0 auto;
+        box-sizing:border-box;
+    }
+
+    .flex {
+        display:flex;
+        flex-wrap:wrap;
+    }
+
+    .cta_button {
+        border:1px solid #f96218;
+        border-radius:5px;
+    }
+
+    body header {
+        width:100%;
+        overflow:hidden;
+        background-color:#404b57;
+    }
+
+    .logo {
+        width:220px;
+        /*background-color:#fff;*/
+        background-color:#404b57;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:10px 0;
+    }
+
+    .nav_wrap {
+        width:calc(100% - 220px);
+        display:flex;
+        flex-wrap:wrap;
+        flex-direction:column;
+    }
+
+    body header nav {
+        /*background-color:#414042;*/
+        background-color:#404b57;
+        /*height:50%;*/
+        height:100%;
+        position:relative;
+    }
+
+    body header nav:after {
+        display:block;
+        content: "";
+        /*background-color:#414042;*/
+        background-color:#404b57;
+        width:200%;
+        left:100%;
+        top:0;
+        height:100%;
+        position:absolute;
+    }
+
+    body header nav ul {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        justify-content:flex-end;
+        height:100%;
+        line-height:100%;
+    }
+
+    body header nav ul li {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:0 0 0 20px;
+    }
+
+    body header nav ul li a {
+        display:block;
+        color:#fff;
+        font-size:12px;
+        text-decoration:none;
+        text-transform:uppercase;
+    }
+
+    body header nav ul li a:hover {
+        color:#f96218;
+    }
+
+    body header nav ul li.hamburger {
+        width:30px;
+        height:100%;
+        display:block;
+        background-image:url('img/hamburger_white.png');
+        background-repeat:no-repeat;
+        background-position:center right;
+        background-size:contain;
+        padding:0 0 0 20px;
+        cursor:pointer;
+        transform:scale(.8);
+        transform-origin:center right;
+        display:none;
+    }
+
+    body header nav ul li.hamburger:hover {
+        background-image:url('img/hamburger_orange.png');
+    }
+
+    .mobile_nav {
+        position:absolute;
+        top:0;
+        right:0;
+        left:0;
+        background:#414042;
+        height:0;
+        max-height:0;
+        overflow:hidden;
+        transition:all .3s;
+    }
+
+    .mobile_nav.active {
+        height:auto;
+        max-height:500px;
+    }
+
+    .mobile_nav ul {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+    }
+
+    .mobile_nav ul li {
+        border-bottom:1px solid #fff;
+    }
+
+    .mobile_nav ul li a {
+        color:#fff;
+        font-size:12px;
+        text-transform:uppercase;
+        text-decoration:none;
+        padding:15px 0;
+        display:block;
+    }
+
+    .mobile_nav ul li a:hover {
+        background-color:#e1e1e1;
+        color:#f96218;
+    }
+
+    .parent_co {
+        /*height:50%;*/
+        /*width:100%;*/
+        /*background-color:#e1e1e1;*/
+        background-color:#eaeaea;
+        position:relative;
+        text-align:right;
+    }
+
+    /*.parent_co:after {
+        display:block;
+        content: "";
+        background-color:#e1e1e1;
+        width:200%;
+        left:100%;
+        top:0;
+        height:100%;
+        position:absolute;
+    }*/
+
+    .parent_co a {
+        /*float:right;*/
+        /*display:block;*/
+        /*height:100%;*/
+    }
+
+    .parent_co a img {
+        margin:5px 0 0 0;
+    }
+
+    .hero {
+        /*background-image:url("img/bg_floorplan.png");*/
+        /*background-image:url("img/blueprint-02.png");*/
+        /*background-repeat:no-repeat, no-repeat;*/
+        /*background-position:center, center;*/
+        /*background-color:#f96218;*/
+        /*background-color:#55585c;*/
+        color:#fff;
+        position:relative;
+
+        background: url("img/blueprint-02.png") no-repeat center / cover, -webkit-radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+        background: url("img/blueprint-02.png") no-repeat center / cover, radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+
+    }
+
+    .hero .container {
+        padding-top:30px;
+        justify-content:center;
+    }
+
+    .hero h1 {
+        font-family:"Roboto", sans-serif;
+        font-weight:100;
+        font-size:52px;
+        line-height:50px;
+        margin:0 0 20px 0;
+    }
+
+    .hero h2 {
+        font-family:"Roboto", sans-serif;
+        font-weight:400;
+        font-size:18px;
+        margin:0 0 30px 0;
+    }
+
+    .cta_button {
+        display:inline-block;
+        padding:10px 15px;
+        transition:all .3s;
+        text-decoration:none;
+        text-transform:uppercase;
+        font-size:16px;
+        border:1px solid #ff8f1c;
+        color:#000;
+
+        background:#ff8f1c;
+        color:#fff;
+    }
+
+    .cta_button:hover {
+        background-color:#fff;
+        color:#ff8f1c;
+    }
+
+    .hero .cta_button {
+        border:1px solid #fff;
+        background-color:rgba(255,255,255,0);
+        color:#fff;
+    }
+
+    .hero .cta_button:hover {
+        background-color:rgba(255,255,255,1);
+        color:#f96218;
+    }
+
+    .sell_sheet_link {
+        color:#fff;
+        display:inline-block;
+        font-size:11px;
+        margin:10px 0 40px 0;
+    }
+
+    .sell_sheet_link:hover {
+        color:#ff8f1c;
+    }
+
+    .hero_content {
+        width:30%;
+        flex-grow:1;
+        box-sizing:border-box;
+    }
+
+    .hero_video {
+        width:640px;
+        max-width:640px;
+        box-sizing:border-box;
+        /*background-image:url("img/hero_monitor.png");*/
+        background-repeat:no-repeat;
+        background-position:bottom center;
+        background-size:contain;
+        position:relative;
+    }
+
+    .video_frame {
+        width:100%;
+        height:auto;
+        display:block;
+        position:relative;
+        z-index:2;
+        pointer-events:none;
+    }
+
+    .hero_video iframe {
+        display:block;
+        position:absolute;
+        top:0;
+        width:96%;
+        height:71%;
+        margin:2%;
+        z-index:1;
+    }
+
+    .app_description {
+        background-color:#e1e1e1;
+        padding:20px 0;
+        font-weight:700;
+        text-align:center;
+        font-size:18px;
+        line-height:27px;
+        color:#414042;
+    }
+
+    .app_description .container {
+        max-width:800px;
+    }
+
+    .feature + .feature {
+        border-top:2px solid #ccc;
+    }
+
+    .feature > .container {
+        padding-top:40px;
+        padding-bottom:40px;
+    }
+
+    .feature .cta_button {
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+
+    .feature .image {
+        width:50%;
+    }
+
+    .feature .image img {
+        width:100%;
+        height:auto;
+        display:block;
+        margin:0 auto;
+    }
+
+    .feature .content {
+        width:50%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .content ul {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+    }
+
+    .content ul li {
+        background-image:url('img/checkmark.png');
+        background-repeat:no-repeat;
+        background-position:top left;
+        padding:0 0 0 20px;
+        margin:0 0 10px 0;
+    }
+
+    .content h3 {
+        color:#f96218;
+        font-size:35px;
+        margin:0 0 20px 0;
+        font-weight:400;
+    }
+
+    .learn_more {
+        display:inline-block;
+        padding:10px 15px;
+        transition:all .3s;
+        text-decoration:none;
+        text-transform:uppercase;
+        font-size:16px;
+        border:1px solid rgba(0,0,0,.4);
+        color:rgba(0,0,0,.4);
+        border-radius:5px;
+    }
+
+    .learn_more:hover {
+        background-color:rgba(0,0,0,.4);
+        color:#fff;
+    }
+
+    .get_started {
+        width:50%;
+        background-color:#414042;
+        text-align:center;
+        color:#fff;
+        padding:80px 0;
+        box-sizing:border-box;
+        line-height:27px;
+    }
+
+    .get_started .container {
+        width:100%;
+        max-width:510px;
+        padding:0 50px;
+        float:right;
+        box-sizing:border-box;
+    }
+
+    .get_started h4 {
+        color:#f96218;
+        font-size:35px;
+        margin:0 0 20px 0;
+        font-weight:400;
+        line-height:39px;
+    }
+
+    .get_started .cta_button {
+        color:#fff;
+        width:135px;
+    }
+
+    .more_info {
+        width:50%;
+        background-color:#ff8f1c;
+        text-align:center;
+        color:#414042;
+        padding:80px 0;
+        box-sizing:border-box;
+        line-height:27px;
+    }
+
+    .more_info .container {
+        width:100%;
+        max-width:510px;
+        padding:0 50px;
+        float:left;
+        box-sizing:border-box;
+    }
+
+    .more_info h4 {
+        color:#6e6e6e;
+        font-size:35px;
+        margin:0 0 20px 0;
+        font-weight:400;
+        line-height:39px;
+    }
+
+    .more_info .cta_button {
+        border:1px solid #c05131;
+        color:#414042;
+    }
+
+    .more_info .cta_button:hover {
+        background-color:#c05131;
+        color:#fff;
+    }
+
+    body footer {
+        background-color:#6e6e6e;
+        padding:30px 0 60px 0;
+        font-size:12px;
+        color:#fff;
+    }
+
+    footer nav {
+        width:30%;
+    }
+
+    footer nav ul {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        flex-direction:column;
+    }
+
+    footer nav ul li {
+        margin:0 0 10px 0;
+    }
+
+    footer nav a {
+        color:#fff;
+        text-decoration:none;
+    }
+
+    footer nav a:hover {
+        color:#ff8f1c;
+    }
+
+    footer .social {
+        display:inline-block;
+        margin:0 10px 0 0;
+        background-repeat:no-repeat;
+        background-position:center;
+        width:32px;
+        height:32px;
+    }
+
+    .social.twitter {
+        background-image:url('img/icon_twitter.png');
+    }
+
+    .social.google {
+        background-image:url('img/icon_googleplus.png');
+    }
+
+    .social.facebook {
+        background-image:url('img/icon_facebook.png');
+    }
+
+    .social.linkedin {
+        background-image:url('img/icon_linkedin.png');
+    }
+
+    .social.youtube {
+        background-image:url('img/icon_youtube.png');
+    }
+
+    .footer_info {
+        width:70%;
+    }
+
+    .follow_me {
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        background-color:#007681;
+        color:#fff;
+        text-decoration:none;
+        font-size:14px;
+        text-align:center;
+        padding:15px 0;
+        text-transform:uppercase;
+        display:none;
+        z-index:10;
+    }
+
+    #demo_overlay, #video_overlay {
+        pointer-events: none;
+        opacity:0;
+        transition:all .3s;
+        position:fixed;
+        z-index:11;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+    }
+
+    #demo_overlay.active, #video_overlay.active {
+        pointer-events:auto;
+        opacity:1;
+    }
+
+    #demo_overlay .modal_overlay, #video_overlay .modal_overlay {
+        position:fixed;
+        z-index:11;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: url("img/blueprint-02.png") no-repeat center / cover, -webkit-radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+        background: url("img/blueprint-02.png") no-repeat center / cover, radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+        pointer-events: none;
+    }
+
+    #demo_overlay.active .modal_overlay, #video_overlay.active .modal_overlay {
+        pointer-events:auto;
+    }
+
+    #demo_overlay > .flex, #video_overlay > .flex {
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal {
+        width:100%;
+        max-width:400px;
+        background:#fff;
+        border-radius:5px;
+        z-index:11;
+        box-shadow:0 0 40px 4px #111118;
+        position:relative;
+    }
+
+    #video_overlay .modal {
+        max-width:none;
+        margin:0 65px;
+    }
+
+    .close_modal {
+        position:absolute;
+        top:5px;
+        right:10px;
+        color:rgba(0,0,0,.4);
+        text-decoration:none;
+        font-size:14px;
+        z-index:99;
+    }
+
+    #video_overlay .close_modal {
+        color:rgba(255,255,255,.7);
+        top:-25px;
+    }
+
+    .close_modal:hover {
+        color:rgba(0,0,0,.8);
+    }
+
+    .modal header {
+        background-color:rgba(241,241,241,0.8);
+    }
+
+    .modal header h1 {
+        font-weight:300;
+        font-size:32px;
+        text-align:center;
+        margin:0;
+        padding:20px 0;
+    }
+
+    .modal form {
+        padding:20px 0 0 0;
+    }
+
+    .modal form label {
+        display:block;
+    }
+
+    .modal input, .modal select, .modal textarea {
+        display:block;
+        width:100%;
+    }
+
+    .modal input[type="checkbox"] {
+        display:inline;
+        width:auto;
+    }
+
+    .modal input[type="text"] {
+        height:30px;
+        line-height:30px;
+        box-sizing:border-box;
+        padding:5px 10px;
+        outline:none;
+        border:1px solid rgba(0,0,0,.2);
+        border-radius:5px;
+    }
+
+    .modal select {
+        height:30px;
+        outline:none;
+        border:1px solid rgba(0,0,0,.2);
+    }
+
+    .modal textarea {
+        border:1px solid rgba(0,0,0,.2);
+        outline:none;
+        box-sizing:border-box;
+        height:60px;
+        padding:5px 10px;
+        border-radius:5px;
+    }
+
+    #demo_overlay input[type="submit"] {
+        border:none;
+        outline:none;
+        color:#fff;
+        background:#ff8f1c;
+        display:block;
+        width:100%;
+        text-align:center;
+        text-transform:uppercase;
+        font-size:18px;
+        font-family:"Roboto", sans-serif;
+        font-weight:100;
+        padding:15px 0;
+        cursor:pointer;
+        border-radius:0 0 5px 5px;
+        margin:20px 0 0 0;
+        transition:all .3s;
+    }
+
+    #demo_overlay input[type="submit"]:hover {
+        background:#C0512D;
+    }
+
+    #demo_overlay form > .flex {
+        margin:0;
+        padding:0 50px;
+        border:none;
+        box-sizing:border-box;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+    }
+
+    #demo_overlay label {
+        display:block;
+        width:calc(50% - 10px);
+        font-size:12px;
+        box-sizing:border-box;
+        padding:0 0 10px 0;
+    }
+
+    #demo_overlay label.full {
+        width:100%;
+    }
+
+    #demo_overlay legend {
+        font-size:12px;
+        font-weight:bold;
+    }
+
+    #demo_overlay .success_message {
+        display:none;
+        text-align:center;
+    }
+
+    #demo_overlay .success_message.active {
+        display:block;
+    }
+
+    #demo_overlay .success_message h3 {
+        font-weight:400;
+        margin:0 0 5px 0;
+    }
+
+    #demo_overlay .success_message p {
+        margin:0 0 30px 0;
+    }
+
+    .video-responsive{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    .video-responsive iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .hero_content, .hero_video {
+            width:100%;
+            text-align:center;
+        }
+        .hero_video {
+            min-height:300px;
+        }
+    }
+
+    @media only screen and (max-width: 800px) {
+        body > header nav ul li {
+            display:none;
+        }
+        body > header nav ul li.hamburger {
+            display:block;
+        }
+        body > header > .container {
+            align-items:stretch;
+        }
+        .parent_co a {
+            transform:scale(.7);
+            transform-origin:right center;
+        }
+        .feature .image, .feature .content {
+            width:100%;
+        }
+        .feature .image {
+            order:1;
+        }
+        .feature .content {
+            order:2;
+            text-align:center;
+        }
+        .content ul {
+            text-align:left;
+        }
+        .content h3 {
+            text-align:center;
+        }
+        .more_info, .get_started {
+            width:100%;
+        }
+        .more_info .container, .get_started .container {
+            max-width:1020px;
+            float:none;
+        }
+        .follow_me {
+            display:block;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .hero_video {
+            min-height:200px;
+        }
+        body header .container {
+            padding:0 20px;
+        }
+        .logo {
+            width:190px;
+        }
+        .nav_wrap {
+            width:calc(100% - 190px);
+        }
+        footer nav {
+            width:100%;
+            padding-bottom:20px;
+        }
+        .footer_info {
+            width:100%;
+        }
+    }
+</style>
+<body>
+<div id="cqcanvas">
+    <header>
+        <div class="parent_co">
+            <div class="container">
+                <a href="https://us.allegion.com/en/home.html" target="_blank"><img src="img/allegion_logo.png" /></a>
+            </div>
+        </div>
+        <div class="container flex">
+            <div class="logo">
+                <a href="http://overtur.allegion.com" target="_blank"><img src="img/overtur_logo_white.png" /></a>
+            </div>
+            <div class="nav_wrap">
+                <nav>
+                    <ul class="flex">
+                        <li><a href="https://us.allegion.com/en/home/trade/architect.html" target="_blank">Hardware Consulting Services </a></li>
+                        <li><a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank">Contact Us</a></li>
+                        <li><a href="http://overtur.allegion.com" target="_blank">Sign Up</a></li>
+                        <li class="hamburger"></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <nav class="mobile_nav">
+            <ul>
+                <li><a href="https://us.allegion.com/en/home/trade/architect.html" target="_blank">Hardware Consulting Services </a></li>
+                <li><a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank">Contact Us</a></li>
+                <li><a href="http://overtur.allegion.com" target="_blank">Sign Up</a></li>
+            </ul>
+        </nav>
+        <div class="container flex">
+            <div class="hero_content">
+                <h1>We've <span style="white-space: nowrap;">re-written</span> the way specs are written.</h1>
+                <h2>A cloud collaboration platform for the design and specification of door hardware.</h2>
+                <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a><br>
+                <a href="overtur_infographic.pdf" target="_blank" class="sell_sheet_link">Download Infographic</a>
+            </div>
+            <div class="hero_video">
+                <img src="img/hero_monitor_frame.png" class="video_frame" />
+                <iframe src='https://www.youtube.com/embed/fZpAs3Mto4I?&rel=0&showinfo=0&modestbranding=1&hd=1&autohide=1&color=white' frameborder='0' allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="app_description">
+        <div class="container">
+            <p>Allegion's Overtur<sup>&trade;</sup> is a cloud-based suite of tools where project team members can come together to collaborate on specifications and the security design of doors and openings. These tools provide a centralized place to capture and maintain door hardware requirements and decisions, with easy options to push that information back to the design tools (e.g. Revit).</p>
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="container flex">
+            <div class="image">
+                <img src="gif/review-designs.gif" />
+            </div>
+            <div class="content">
+                <h3>Review Designs Online</h3>
+                <ul>
+                    <li><strong>Organize and coordinate data for improved collaboration</strong></li>
+                    <li>See your designs in a live environment</li>
+                    <li>Easily capture decisions and requirements about your project's hardware</li>
+                    <li>Choose the plan viewing mode that fits your needs</li>
+                    <li>Review and make collaborative changes in real time</li>
+                </ul>
+                <div>
+                    <a href="https://www.youtube.com/embed/BJs0AKk_gro" target="_blank" class="learn_more">Learn More</a>
+                    <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="container flex">
+            <div class="content">
+                <h3>Upload from BIM</h3>
+                <ul>
+                    <li><strong>Saves time and eliminates errors</strong></li>
+                    <li>Send door data, schedules, plans and project information directly from Revit to your project</li>
+                    <li>Package data in a centralized, accessible hub</li>
+                    <li>Click once to send BIM data directly to a project</li>
+                </ul>
+                <div>
+                    <a href="https://www.youtube.com/embed/bkvYqetanj8" target="_blank" class="learn_more">Learn More</a>
+                    <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a>
+                </div>
+            </div>
+            <div class="image">
+                <img src="gif/upload.gif" />
+            </div>
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="container flex">
+            <div class="image">
+                <img src="gif/door-data.gif" />
+            </div>
+            <div class="content">
+                <h3>Transfer Door Data</h3>
+                <ul>
+                    <li><strong>Streamline the specification cycle and reduces errors</strong></li>
+                    <li>Gather accurate electrical requirements in one place</li>
+                    <li>Share instantly with your team and Allegion to streamline specification cycles</li>
+                    <li>Eliminate manual entry and re-typing of data</li>
+                </ul>
+                <div>
+                    <a href="https://www.youtube.com/embed/gPN5FqXUU48" target="_blank" class="learn_more">Learn More</a>
+                    <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="container flex">
+            <div class="content">
+                <h3>Track Changes</h3>
+                <ul>
+                    <li><strong>Maintains a complete, easy to review record of all changes throughout the life of the project</strong></li>
+                    <li>Track all plan modifications graphically</li>
+                    <li>Filter updates in relevant and meaningful ways</li>
+                    <li>Compare changes over defined points in time</li>
+                </ul>
+                <div>
+                    <a href="https://www.youtube.com/embed/2bxDCO7tANk" target="_blank" class="learn_more">Learn More</a>
+                    <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a>
+                </div>
+            </div>
+            <div class="image">
+                <img src="gif/track-changes.gif" />
+            </div>
+        </div>
+    </section>
+
+    <div class="flex">
+        <section class="get_started">
+            <div class="container">
+                <h4>Ready to get started?</h4>
+                <p>Click the link below to sign up and begin using Allegion's Overtur.</p>
+                <a href="http://overtur.allegion.com" target="_blank" class="cta_button nopop">Sign Up</a>
+            </div>
+        </section>
+
+        <section class="more_info">
+            <div class="container">
+                <h4>Need more info?</h4>
+                <p>For more information or a live demonstration, contact one of Allegion's Architectural Consultants here.</p>
+                <a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank" class="cta_button">Request A Demo</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container flex">
+            <nav>
+                <ul class="flex">
+                    <li><a href="https://us.allegion.com/en/home/trade/architect.html" target="_blank">Hardware Consulting Services </a></li>
+                    <li><a href="https://us.allegion.com/en/home/support/contact-spec-writer.html" target="_blank">Contact Us</a></li>
+                    <li><a href="http://overtur.allegion.com" target="_blank">Sign Up</a></li>
+                    <li><a href="https://www.allegion.com/corp/en/footer/privacy-statement.html" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div class="footer_info">
+                <a href="https://twitter.com/AllegionUS" target="_blank" class="social twitter"></a>
+                <!-- <a href="" target="_blank" class="social google"></a> -->
+                <!-- <a href="" target="_blank" class="social facebook"></a> -->
+                <a href="https://www.linkedin.com/company/allegion-us" target="_blank" class="social linkedin"></a>
+                <a href="https://www.youtube.com/user/allegionus" target="_blank" class="social youtube"></a>
+                <p>&copy; Allegion plc, 2019 | Block D, Iveagh Court, Harcourt Road, Dublin 2, Co. Dublin, Ireland.</p>
+                <p>REGISTERED IN IRELAND WITH LIMITED LIABILITY REGISTERED NUMBER 527370</p>
+                <p>Allegion is an equal opportunity and affirmative action employer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <section id="video_overlay">
+        <div class="modal_overlay"></div>
+        <div class="flex">
+            <div class="modal">
+                <a href="#" class="close_modal">CLOSE (X)</a>
+                <div class="video-responsive">
+                    <iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo_overlay">
+        <div class="modal_overlay"></div>
+        <div class="flex">
+            <div class="modal">
+                <a href="#" class="close_modal">X</a>
+                <header>
+                    <h1>Contact Us</h1>
+                </header>
+                <form name="contact_form">
+                    <div class="success_message">
+                        <h3>Thank You</h3>
+                        <p>A representative will contact you soon.</p>
+                    </div>
+                    <div class="flex">
+                        <label>First Name:
+                            <input type="text" name="firstName" />
+                        </label>
+                        <label>Last Name:
+                            <input type="text" name="lastName" />
+                        </label>
+                        <label>Organization/Firm:
+                            <input type="text" name="organization" />
+                        </label>
+                        <label>Role/Title:
+                            <input type="text" name="role" />
+                        </label>
+                        <label>Email:
+                            <input type="text" name="email" />
+                        </label>
+                        <label>Phone Number:
+                            <input type="text" name="phone" />
+                        </label>
+                        <!--
+                        <label>Geographic Location:
+                            <select name="geographicalLocation">
+                                <option selected="selected" value=""></option>
+                                <option value="1">Carolinas (NC, SC, VA (not Washington DC), Eastern TN from Crossville)</option>
+                                <option value="2">Central (IA, IL, KS, MO, NE)</option>
+                                <option value="3">Chicago (Chicago, Eastern WI)</option>
+                                <option value="4">Colorado (CO, MT, WY)</option>
+                                <option value="5">North Florida (Northern FL)</option>
+                                <option value="6">South Florida (Southern FL)</option>
+                                <option value="7">Great Lakes (NY, PA, not Metro NY)</option>
+                                <option value="8">Metro NY</option>
+                                <option value="9">Michigan (MI)</option>
+                                <option value="10">Mid Atlantic (DE, MD, Philadelphia/Washington DC)</option>
+                                <option value="11">Midwest (IN, KY, OH, WV)</option>
+                                <option value="29">Mountain States (CO/ID/MT/NV/UT/WY)</option>
+                                <option value="12">New England (CT, MA, ME, NH, VT)</option>
+                                <option value="13">North Central (MN, ND, SD, West WI)</option>
+                                <option value="14">Northern California</option>
+                                <option value="15">Northwest (OR, WA, AK)</option>
+                                <option value="16">South (AL, GA, LA, MS, TN)</option>
+                                <option value="17">Southern California &amp; Hawaii (LA, Ventura, Santa Barbara, San Luis Obispo, Kern, Kings, Tulare, Inyo)</option>
+                                <option value="18">Southern California (San Bernardino, Riverside, Orange, San Diego, Imperial, Clark)</option>
+                                <option value="19">Southwest (AZ, NM)</option>
+                                <option value="20">North Texas (AR, OK, TX) Dallas Office</option>
+                                <option value="21">South Texas (AR, OK, TX) Houston Office</option>
+                                <option value="22">Utah (Southern ID, Eastern NV, UT)</option>
+                                <option value="23">Eastern Canada</option>
+                                <option value="24">Ontario</option>
+                                <option value="25">Quebec</option>
+                                <option value="26">Western Canada (British Columbia, Alberta)</option>
+                                <option value="27">Western Canada (Manitoba, Saskatchewan)</option>
+                                <option value="28">Outside the US and Canada</option>
+                            </select>
+                        </label>
+                        -->
+                        <label>Zipcode:
+                            <input type="text" name="zipCode" />
+                        </label>
+                        <label class="full">Comments:
+                            <textarea name="comment"></textarea>
+                        </label>
+                    </div>
+                    <div class="flex">
+                        <legend>Sign up to receive communications from Allegion</legend>
+                        <label class="full"><input type="checkbox" name="newsletter" value="Code & Education Corner"/>Code &amp; Education Corner</label>
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a href="" class="follow_me">Sign Up</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(document).on({
+                click: function(e) {
+                    e.preventDefault();
+                    $('#demo_overlay').toggleClass('active');
+                },
+                touchend: function(e) {
+                    e.preventDefault();
+                    $('#demo_overlay').toggleClass('active');
+                }
+            }, '.cta_button:not(.nopop)');
+
+            $(document).on({
+                click: function(e) {
+                    e.preventDefault();
+                    var video_url = $(this).attr('href');
+                    var iframe = $('#video_overlay iframe');
+                    iframe.attr('src', video_url);
+                    $('#video_overlay').toggleClass('active');
+                },
+                touchend: function(e) {
+                    e.preventDefault();
+                    var video_url = $(this).attr('href');
+                    var iframe = $('#video_overlay iframe');
+                    iframe.attr('src', $video_url);
+                    $('#video_overlay').toggleClass('active');
+                }
+            }, '.learn_more:not(.nopop)');
+
+            $(document).on({
+                click: function(e) {
+                    e.preventDefault();
+                    $(this).closest('section').toggleClass('active');
+                    // $('.modal_overlay').closest('section').toggleClass('active');
+                },
+                touchend: function(e) {
+                    e.preventDefault();
+                    $(this).closest('section').toggleClass('active');
+                    // $('.modal_overlay').closest('section').toggleClass('active');
+                }
+            }, '.modal_overlay, .close_modal');
+
+            $(document).on('click', '#demo_overlay input[type="submit"]', function(e) {
+                e.preventDefault();
+
+                var firstName = $('input[name="firstName"]').val(),
+                    lastName = $('input[name="lastName"]').val(),
+                    organization = $('input[name="organization"]').val(),
+                    role = $('input[name="role"]').val(),
+                    email = $('input[name="email"]').val(),
+                    phone = $('input[name="phone"]').val(),
+                    geographicalLocationName = $('select[name="geographicalLocation"] option:selected').text(),
+                    geographicalLocation = $('select[name="geographicalLocation"]').val(),
+                    zipcode = $('input[name="zipCode"]').val(),
+                    comment = $('textarea[name="comment"]').val(),
+                    subscription = '';
+
+                $.each($('input[name="newsletter"]:checked'), function(){
+                    if(subscription != ''){
+                        subscription = subscription + ',' + $(this).val();
+                    } else {
+                        subscription = $(this).val();
+                    }
+                });
+
+                var ajax_url = 'https://us.allegion.com/bin/contact-spec-writer/allegion-us-2';
+
+                $.ajax({
+                    type: 'POST',
+                    url: ajax_url,
+                    data: {
+                        firstName: firstName,
+                        lastName: lastName,
+                        organization: organization,
+                        role: role,
+                        email: email,
+                        phone: phone,
+                        geographicalLocationName: geographicalLocationName,
+                        geographicalLocation: geographicalLocation,
+                        zipcode: zipcode,
+                        comment: comment,
+                        subscription: subscription,
+                        homePagePath: '/content/allegion-us-2/en/home'
+                    },
+                    success: function(msg) {
+
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+
+                    },
+                    complete: function() {
+                        var html = '<h3>Thank You</h3><p>A representative will contact you soon.</p>';
+                        $('#demo_overlay form > .flex, #demo_overlay form input[type="submit"]').fadeOut('slow', function() {
+                            $('.success_message').addClass('active');
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-8080565-49', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <!--BEGIN QUALTRICS WEBSITE FEEDBACK SNIPPET-->
+    <script type='text/javascript'>
+        (function(){var g=function(e,h,f,g){
+            this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+            this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+            this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};
+            this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g+ "&t=" + (new Date()).getTime();document.body&&document.body.appendChild(a)}};
+            this.start=function(){var a=this;window.addEventListener?window.addEventListener("load",function(){a.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){a.go()})}};
+            try{(new g(100,"r","QSI_S_SI_7USDKYfCUD8QQZf","https://zndgpm8liqo6qk9tx-allegioncx.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_SIID=SI_7USDKYfCUD8QQZf&Q_LOC="+encodeURIComponent(window.location.href))).start()}catch(i){}})();
+    </script><div id='SI_7USDKYfCUD8QQZf'><!--DO NOT REMOVE-CONTENTS PLACED HERE--></div>
+    <!--END WEBSITE FEEDBACK SNIPPET-->
+</div>
+</body>
+</html>
