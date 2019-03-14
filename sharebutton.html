@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Testing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <style type="text/less">
+        .sharingButtons {
+            .sharingIcons {
+                display: inline-block;
+                padding: 15px;
+                a{
+                    text-decoration: underline transparent;
+                    transition: all .3s;
+                }
+
+                img {
+                    height: 38px;
+                    width: 38px;
+                    cursor: pointer;
+                    transition: all .33s;
+
+                    &:hover {
+                        filter: brightness(70%);
+                    }
+                }
+
+                .hiddenSocialImg {
+                    opacity: 0;
+                    position: absolute;
+                    cursor: initial;
+
+                    &.activeImg {
+                        opacity: 1;
+                        cursor: pointer;
+
+                        &.img2 {
+                            transform: translate(50px, -85px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(50px, -85px) scale(1.2);
+                            }
+                        }
+
+                        &.img3 {
+                            transform: translate(0, -95px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(0, -95px) scale(1.2);
+                            }
+                        }
+
+                        &.img4 {
+                            transform: translate(-55px, -84px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(-55px, -84px) scale(1.2);
+                            }
+                        }
+
+                        &.img5 {
+                            transform: translate(-70px, -38px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(-70px, -38px) scale(1.2);
+                            }
+                        }
+
+                        &.img6 {
+                            transform: translate(-55px, 12px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(-55px, 12px) scale(1.2);
+                            }
+                        }
+
+                        &.img7 {
+                            transform: translate(0px, 22px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(0px, 22px) scale(1.2);
+                            }
+                        }
+
+                        &.img8 {
+                            transform: translate(50px, 12px) rotate(360deg);
+
+                            &:hover {
+                                transform: translate(50px, 12px) scale(1.2);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+</head>
+<body style="margin:150px;">
+<div class="clearfix">
+    <div class="sharingButtons">
+        <div class="shareFirstGroup sharingIcons">
+            <a href="#">
+                <img src="Han-Solo-Main.jpg" class="img1" alt="share"/>
+                Share
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img2 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img3 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img4 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img5 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img6 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img7 hiddenSocialImg" alt="share"/>
+            </a>
+            <a href="#" target="_blank">
+                <img src="Han-Solo-Main.jpg" class="img8 hiddenSocialImg" alt="share"/>
+            </a>
+
+        </div>
+        <div class="shareContactGroup sharingIcons">
+            <a href="#">
+                <img src="Han-Solo-Main.jpg" alt="share"/>
+                Contact
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(".sharingButtons .shareFirstGroup .img1").click(function () {
+        $(".hiddenSocialImg").toggleClass("activeImg")
+    });
+</script>
+</body>
+</html>
