@@ -111,29 +111,29 @@
 <div class="clearfix">
     <div class="sharingButtons">
         <div class="shareFirstGroup sharingIcons">
-            <a href="#">
+            <a>
                 <img src="Han-Solo-Main.jpg" class="img1" alt="share"/>
                 Share
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img2 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img3 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img4 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img5 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img6 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img7 hiddenSocialImg" alt="share"/>
             </a>
-            <a href="#" target="_blank">
+            <a href="#" target="_blank" class="sharingLinks">
                 <img src="Han-Solo-Main.jpg" class="img8 hiddenSocialImg" alt="share"/>
             </a>
 
@@ -152,6 +152,13 @@
     $(".sharingButtons .shareFirstGroup .img1").click(function () {
         $(".hiddenSocialImg").toggleClass("activeImg")
     });
+
+    $(".sharingLinks").click(function (e) {
+        if (!$(this).find("img").hasClass("activeImg")) {
+            e.preventDefault();
+        }
+    })
+
 </script>
 </body>
 </html>
