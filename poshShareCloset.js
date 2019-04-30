@@ -10,11 +10,13 @@ function clickShareButton() {
     for (let i = 0; i < shares.length; i++) {
         setTimeout(function () {
             if (shares[i] != null && shares[i] !== "") {
+                if($("#captcha-popup").length != 0){
+                    if($("#captcha-popup").hasClass("in")){
+                        $(".recaptcha-checkbox-checkmark").click();
+                    }
+                }
                 $("a.pm-followers-share-link").attr("href", "/listing/share?post_id=" + shares[i]);
                 $("a.pm-followers-share-link").click();
-                if($("#captcha-popup").css("display") != "none"){
-                    $(".recaptcha-checkbox-checkmark").click();
-                }
 
             }
         }, i * 5000);

@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fae5133-8b9b-42aa-a6b9-ae6341e7a7f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/oldProductDetail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poshShareCloset.js" beforeDir="false" afterPath="$PROJECT_DIR$/poshShareCloset.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/poshShareFeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/poshShareFeed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sharebutton.html" beforeDir="false" afterPath="$PROJECT_DIR$/sharebutton.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratchHTML.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="237" column="82" lean-forward="true" selection-start-line="237" selection-start-column="82" selection-end-line="237" selection-end-column="82" />
+            <state relative-caret-position="714">
+              <caret line="237" column="82" selection-start-line="237" selection-start-column="82" selection-end-line="237" selection-end-column="82" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
               </folding>
@@ -32,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sharebutton.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
+            <state relative-caret-position="2261">
               <caret line="133" column="87" selection-start-line="133" selection-start-column="87" selection-end-line="133" selection-end-column="87" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -67,20 +65,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poshShareCloset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="16" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+            <state relative-caret-position="238">
+              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -88,12 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oldProductDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1147">
+            <state relative-caret-position="1836">
               <caret line="108" selection-start-line="108" selection-end-line="108" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -272,7 +266,8 @@
       <workItem from="1556299786591" duration="36000" />
       <workItem from="1556546239458" duration="56000" />
       <workItem from="1556629047218" duration="138000" />
-      <workItem from="1556630591446" duration="1340000" />
+      <workItem from="1556630591446" duration="1591000" />
+      <workItem from="1556634612379" duration="211000" />
     </task>
     <task id="LOCAL-00001" summary="Committing Posh Share">
       <created>1554052587364</created>
@@ -285,7 +280,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94309000" />
+    <option name="totallyTimeSpent" value="94771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -421,6 +416,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratchHTML.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="237" column="82" selection-start-line="237" selection-start-column="82" selection-end-line="237" selection-end-column="82" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sharebutton.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="133" column="87" selection-start-line="133" selection-start-column="87" selection-end-line="133" selection-end-column="87" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testArticles.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12206">
@@ -445,48 +460,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratchHTML.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="237" column="82" lean-forward="true" selection-start-line="237" selection-start-column="82" selection-end-line="237" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oldProductDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1147">
+        <state relative-caret-position="1836">
           <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sharebutton.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="133" column="87" selection-start-line="133" selection-start-column="87" selection-end-line="133" selection-end-column="87" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/poshShareCloset.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
