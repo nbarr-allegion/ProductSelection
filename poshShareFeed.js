@@ -10,6 +10,9 @@ for (let i = 0; i < shares.length; i++) {
         if (shares[i] != null && shares[i] !== "") {
             $("a.pm-followers-share-link").attr("href", "/listing/share?post_id=" + shares[i]);
             $("a.pm-followers-share-link").click();
+            if($("#captcha-popup").css("display") != "none"){
+                $(".recaptcha-checkbox-checkmark").click();
+            }
         }
     }, i * 2000);
 }

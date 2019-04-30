@@ -12,17 +12,17 @@ function clickShareButton() {
             if (shares[i] != null && shares[i] !== "") {
                 $("a.pm-followers-share-link").attr("href", "/listing/share?post_id=" + shares[i]);
                 $("a.pm-followers-share-link").click();
+                if($("#captcha-popup").css("display") != "none"){
+                    $(".recaptcha-checkbox-checkmark").click();
+                }
+
             }
-        }, i * 8000);
+        }, i * 5000);
     }
 }
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 3000; i++) {
     setTimeout(function () {
         clickShareButton();
-    }, i * shares.length * 8000)
+    }, i * shares.length * 5000)
 }
-
-
-
-
