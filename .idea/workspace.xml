@@ -69,20 +69,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/poshShareCloset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="73" lean-forward="true" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="73" />
+            <state relative-caret-position="493">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="119">
+              <caret line="43" column="74" lean-forward="true" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -168,6 +168,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,8 +194,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,6 +279,11 @@
       <workItem from="1556718936242" duration="38000" />
       <workItem from="1556720178077" duration="285000" />
       <workItem from="1556721188935" duration="254000" />
+      <workItem from="1556726576401" duration="738000" />
+      <workItem from="1556800938188" duration="1011000" />
+      <workItem from="1556803371040" duration="127000" />
+      <workItem from="1556808930707" duration="21000" />
+      <workItem from="1556826437876" duration="1256000" />
     </task>
     <task id="LOCAL-00001" summary="Committing Posh Share">
       <created>1554052587364</created>
@@ -291,7 +296,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97907000" />
+    <option name="totallyTimeSpent" value="101060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -319,6 +324,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.659805" />
       <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="bottom" id="Quokka" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -329,6 +335,8 @@
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Key Promoter X" order="10" />
+      <window_info anchor="right" id="Jenkins" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,17 +487,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
+    <entry file="file://$PROJECT_DIR$/poshShareCloset.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="493">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poshShareCloset.js">
+    <entry file="file://$PROJECT_DIR$/poshShareFeed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="73" lean-forward="true" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="73" />
+        <state relative-caret-position="119">
+          <caret line="43" column="74" lean-forward="true" selection-start-line="43" selection-start-column="74" selection-end-line="43" selection-end-column="74" />
         </state>
       </provider>
     </entry>
